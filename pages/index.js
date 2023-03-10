@@ -128,39 +128,39 @@ export default function Home() {
         </section>
 
         <section id='extra' className='bg-neutral-900 my-36'>
-          <div className='flex flex-col justify-center items-center w-8/12 min-w-min mx-auto py-12'>
+          <div className='flex flex-col justify-center items-center w-8/12 min-w-min mx-auto py-36'>
             <h1 className='text-8xl text-white'>Pénz - Idő - Energia</h1>
             <h1 className='text-8xl text-white'>Megtakarítás</h1>
             <h2 className='text-5xl text-[#e94e1b]'>Ami extra bevételt jelent</h2>
           </div>
 
-          <div className='flex flex-col justify-center items-center h-[60vh] bg-neutral-900'>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 1), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-18.jpg")`} } >
             <Image src="https://rauli.hu/wp-content/uploads/2022/04/rauli-fekete.png" width={700} height={500} className="mb-[-150px] z-10"/>
             <p className='text-3xl text-white text-center bg-[#e94e1b] w-3/6 py-2 px-4'>Az univerzális alkatrészek anyagszámítása, és rendelése pofon egyszerű, nem igényel hosszú órákat</p>
           </div>
 
-          <div className='flex flex-col justify-center items-center h-[60vh] bg-neutral-900'>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/rauli-alkatreszek-abra.jpg")`} } >
             <Image src="https://rauli.hu/wp-content/uploads/2022/04/raktarozas.png" width={400} height={400} className="mb-[-100px]"/>
             <p className='text-3xl text-white text-center bg-[#e94e1b] w-3/6 py-2 px-4'>A kevés darabszámnak köszönhetően könnyű és takarékos a raktározás</p>
           </div>
 
-          <div className='flex flex-col justify-center items-center h-[60vh] bg-neutral-900'>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/P1020792.jpg")`} } >
             <Image src="https://rauli.hu/wp-content/uploads/2022/04/rauli-nincs-vagas.png" width={700} height={500} className="mb-[-150px] z-10"/>
             <p className='text-3xl text-white text-center bg-[#e94e1b] w-3/6 py-2 px-4'>a maximum 2,4 m hosszú sínek rakásolhatók, így dobozos autó belsejében is könnyedén szállíthatók.</p>
           </div>
 
-          <div className='flex flex-col justify-center items-center h-[60vh] bg-neutral-900'>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/konnyu-szallithatosag-rauli.jpg")`} } >
             <Image src="https://rauli.hu/wp-content/uploads/2022/04/rauli-teleszkop.png" width={700} height={500} className="mb-[-100px] ml-[-140px] z-10"/>
             <p className='text-3xl text-white text-center bg-[#e94e1b] w-3/6 py-2 px-4'>a teleszkópos sínek miatt nincs szükség helyszíni szabásra, a munka nagy mértékben felgyorsul</p>
           </div>
 
-          <div className='flex flex-col justify-center items-center h-[60vh] bg-neutral-900'>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/easyclick-web.jpg")`} } >
             <Image src="https://rauli.hu/wp-content/uploads/2022/04/easy-click-abra.png" width={500} height={300} className="mb-[50px] z-10"/>
             <p className='text-3xl text-white text-center bg-[#e94e1b] w-3/6 py-2 px-4'>Az easyclick rendszernek hála szinte csavarozás nélkül telepíthető - szupergyors</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] bg-neutral-900 overflow-hidden'>
-            <Image src="https://rauli.hu/wp-content/uploads/2022/04/ido-rauli.jpg" width={1920} height={1080} className="absolute opacity-10 w-full h-auto mix-blend-luminosity"/>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/ido-rauli.jpg")`} } >
+            
             <h1 className='text-9xl font-black text-neutral-800 mb-[-30px]'>+40%</h1>
             <p className='text-3xl text-white text-center bg-[#e94e1b] w-3/6 py-2 px-4 z-10'>a gyors és egyszerű szerelésnek köszönhetően akár 40%-al több telepítés kivitelezhető ugyanannyi emberrel, vagy kissebb csapat is elég ugyanahhoz a munkához</p>
           </div>
