@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
-import { Bebas_Neue } from 'next/font/google'
 
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
