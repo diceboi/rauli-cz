@@ -79,7 +79,7 @@ export default function Home() {
         </section>
         
         <nav className='fixed bottom-0 lg:top-0 lg:sticky border-t lg:border-b border-t-[#e94e1b] lg:border-b-[#e94e1b] z-50 w-full'>
-          <ul className='flex flex-wrap w-full justify-start lg:justify-center text-md lg:text-3xl text-white bg-neutral-900 cursor-pointer'>
+          <ul className='flex flex-wrap w-full justify-evenly lg:justify-center text-md lg:text-3xl text-white bg-neutral-900 cursor-pointer'>
             <Link href="#fullblack"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>Full Black</li></Link>
             <Link href="#easyclick"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>Easyclick</li></Link>
             <Link href="#warranty"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/warranty-icon.svg" width={30} height={30}/>Garancia</li></Link>
@@ -159,7 +159,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id='warranty' className='flex justify-center items-start lg:items-end h-[60vh] w-11/12 lg:w-8/12 m-auto py-12'>
+        <section id='warranty' className='flex justify-center items-center h-screen w-11/12 lg:w-8/12 m-auto py-12'>
           <div className='grid grid-cols-1 grid-rows-1 lg:grid-row-1 lg:grid-cols-2 gap-16'>
             <div className='col-span-1 text-5xl lg:text-8xl text-white'>
               <h1 className='px-4 py-2 bg-[#e94e1b] w-fit'>A Leghosszabb </h1>
@@ -176,8 +176,9 @@ export default function Home() {
         </section>
 
         <section id='media' className='mx-auto w-11/12 lg:w-8/12 mb-40'> 
-          <div className='grid grid-cols-1 grid-rows-4 gap-6 items-end'>
-            <h1 className='text-5xl lg:text-8xl text-white px-4 pt-2 pb-1 bg-[#e94e1b] w-fit'>Médiatár</h1>
+          <h1 className='text-5xl lg:text-8xl text-white px-4 pt-2 mb-6 bg-[#e94e1b] w-fit'>Médiatár</h1>
+          <div className='grid grid-cols-1 grid-rows-3 gap-6 items-end'>
+            
             
             <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 gap-6'>
             <iframe width="100%" height="315" src="https://www.youtube.com/embed/TU8mi6g-02M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
