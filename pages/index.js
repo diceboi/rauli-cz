@@ -79,12 +79,12 @@ export default function Home() {
         </section>
         
         <nav className='fixed bottom-0 lg:top-0 lg:sticky border-t lg:border-b border-t-[#e94e1b] lg:border-b-[#e94e1b] z-50 w-full'>
-          <ul className='flex flex-wrap w-full justify-center text-md lg:text-3xl text-white bg-neutral-900 cursor-pointer'>
-            <Link href="#fullblack"><li className='hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'>Full Black Design</li></Link>
-            <Link href="#easyclick"><li className='hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'>Easyclick Techológia</li></Link>
-            <Link href="#warranty"><li className='hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'>A leghosszabb garancia</li></Link>
-            <Link href="#media"><li className='hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'>Médiatár</li></Link>
-            <Link href="#extra"><li className='hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'>Extra</li></Link>
+          <ul className='flex flex-wrap w-full justify-start lg:justify-center text-md lg:text-3xl text-white bg-neutral-900 cursor-pointer'>
+            <Link href="#fullblack"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>Full Black</li></Link>
+            <Link href="#easyclick"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>Easyclick</li></Link>
+            <Link href="#warranty"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/warranty-icon.svg" width={30} height={30}/>Garancia</li></Link>
+            <Link href="#media"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/media-icon.svg" width={30} height={30}/>Médiatár</li></Link>
+            <Link href="#extra"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/extra-icon.svg" width={30} height={30}/>Extra</li></Link>
           </ul>
         </nav>
 
