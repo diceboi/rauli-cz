@@ -37,8 +37,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://rauli.hu/wp-content/uploads/2022/05/rauli-favicon.png" />
       </Head>
-      <main>
-        <section id='hero' className="flex justify-center items-center bg-neutral-900 h-screen bg-fixed bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-1-1.jpg')]">
+      <main className='overflow-hidden'>
+        <section id='hero' className="flex justify-center items-center bg-neutral-900 h-screen lg:bg-fixed bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-1-1.jpg')]">
           <div className='flex absolute top-5 right-5 text-xl gap-4'>
             <p className='text-white'>Language</p>
             <select name="Languages" onChange={handleSelect}>
@@ -51,11 +51,11 @@ export default function Home() {
             </select>
           </div>
 
-          <div className='flex bottom-5 right-5 gap-4 fixed z-50'>
-            <button className=' bg-[#e94e1b] px-8 py-2 text-3xl text-white fix'>
+          <div className='flex bottom-20 lg:bottom-5 right-2 gap-2 fixed z-50 overflow-hidden'>
+            <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white fix'>
               <Link href="#workshop" className='flex justify-center items-center gap-2'><FaChalkboardTeacher className='h-6 w-6'/> Workshop</Link>
             </button>
-            <button className=' bg-[#e94e1b] px-8 py-2 text-3xl text-white'>
+            <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white fix'>
               <Link href="#contact" className='flex justify-center items-center gap-2'><AiOutlineForm className='h-6 w-6'/> Contact</Link>
             </button>
 
@@ -78,7 +78,7 @@ export default function Home() {
           </div>
         </section>
         
-        <nav className='fixed bottom-0 lg:top-0 lg:sticky border-t lg:border-b border-t-[#e94e1b] lg:border-b-[#e94e1b] z-50 w-full'>
+        <nav className='fixed bottom-0 lg:top-0 lg:sticky border-t lg:border-b border-t-[#e94e1b] lg:border-b-[#e94e1b] z-50 w-[100vw]'>
           <ul className='flex flex-wrap w-full justify-evenly lg:justify-center text-md lg:text-3xl text-white bg-neutral-900 cursor-pointer'>
             <Link href="#fullblack"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>Full Black</li></Link>
             <Link href="#easyclick"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>Easyclick</li></Link>
@@ -89,8 +89,8 @@ export default function Home() {
         </nav>
 
         <section id='fullblack' className='w-full h-auto'>
-          <div className='grid grid-cols-1 grid-rows-4 lg:grid-cols-3 lg:grid-rows-2'>
-            <div className="relative col-span-2 row-span-3 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/rauli-hatter-web.jpg')]">
+          <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-2'>
+            <div className="relative col-span-1 row-span-1 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/rauli-hatter-web.jpg')]">
               <div className='text-right absolute right-0 bottom-0 p-4 text-white lg:w-4/5'>
                 <h1 className='text-5xl lg:text-8xl'>Full Black Design</h1>
                 <h2 className='text-xl lg:text-4xl'>Teljesen fekete megjelenés ami bármilyen tetőfelületet exkluzívvá tesz</h2>
@@ -100,10 +100,10 @@ export default function Home() {
             <Image className='col-span-1 row-span-1 w-full h-full' src="https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-26.jpg" width={1440} height={960}></Image>
           </div>
 
-          <div className='grid grid-cols-1 grid-rows-4 lg:grid-cols-3 lg:grid-rows-2'>
+          <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-2'>
             <Image className='col-span-1 row-span-1 w-full h-full' src="https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-2.jpg" width={1440} height={960}></Image>
             
-            <div className="relative col-span-2 row-span-3 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-12.jpg')]">
+            <div className="relative col-span-1 row-span-1 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-12.jpg')]">
               
             </div>
             
@@ -117,28 +117,28 @@ export default function Home() {
             <div className='relative w-full h-auto col-span-1 lg:col-span-2'>
               <div className='w-full h-full z-10 absolute'>
                 <div id='circle-telescopic' className='group h-12 w-12 absolute top-[25%] left-[40%] cursor-pointer'><BsCircleFill data-tooltip-target="tooltip-light" data-tooltip-style="light" className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b]'/><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b] animate-ping'/>
-                <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-xl py-2 z-10 group-hover:opacity-100 ml-14 px-3 pointer-events-none">
+                <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-md lg:text-xl py-2 z-10 group-hover:opacity-100 mr-8 lg:ml-14 px-3 pointer-events-none">
                 Telszkópos sínek
                 </div>
                 </div>
 
                 <div id='circle-quality' className='group cursor-pointer absolute top-[50%] left-[39%]'><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b]'/><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b] animate-ping'/>
                 
-                <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-xl py-2 z-10 group-hover:opacity-100 ml-14 px-3 pointer-events-none">
+                <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-md lg:text-xl py-2 z-10 group-hover:opacity-100 mr-8 lg:ml-14 px-3 pointer-events-none">
                 skandináv minőség
                 </div>
                 
                 </div>
                 <div id='circle-steel' className='group cursor-pointer absolute top-[40%] left-[55%]'><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b]'/><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b] animate-ping'/>
                 
-                <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-xl py-2 z-10 group-hover:opacity-100 ml-14 px-3 pointer-events-none">
+                <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-md lg:text-xl py-2 z-10 group-hover:opacity-100 mr-8 lg:ml-14 px-3 pointer-events-none">
                 Nagy szilárdságú Finn acél
                 </div>
                 
                 </div>
                 <div id='circle-precision' className='group cursor-pointer absolute top-[35%] left-[75%]'><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b]'/><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b] animate-ping'/>
                 
-                <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-xl py-2 z-10 group-hover:opacity-100 ml-14 px-3 pointer-events-none">
+                <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-md lg:text-xl py-2 z-10 group-hover:opacity-100 mr-48 lg:mr-48 px-3 pointer-events-none">
                 Precíziós robotmegmunkálás
                 </div>
                 
