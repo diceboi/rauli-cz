@@ -5,6 +5,6 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: ['rauli.hu'],
+    domains: ['server.profigreentech.hu','rauli.hu'],
   },
 }

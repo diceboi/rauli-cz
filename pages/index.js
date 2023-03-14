@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Router from 'next/router'
+import client from '../apollo-client'
 import { BsCircleFill } from 'react-icons/bs'
 import { BiChevronRight } from 'react-icons/bi'
 import { FaPhoneAlt } from 'react-icons/fa'
@@ -9,9 +10,10 @@ import { FaChalkboardTeacher } from 'react-icons/fa'
 import { AiOutlineForm } from 'react-icons/ai'
 
 import { gql } from "@apollo/client";
-import client from "../apollo-client";
 
-export default function Home() {
+import { RAULI_CZ } from '@/lib/queries'
+
+export default function Home({ raulidata }) {
 
   const handleSelect = (event) => {
     const selectedValue = event.target.value;
@@ -25,7 +27,7 @@ export default function Home() {
     } else if (selectedValue === 'Sk') {
       Router.push('http://rauli.sk');
     } else if (selectedValue === 'Cz') {
-      Router.push('http ://rauli.cz');
+      Router.push('http://rauli.cz');
     } 
   };
 
@@ -37,8 +39,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://rauli.hu/wp-content/uploads/2022/05/rauli-favicon.png" />
       </Head>
-      <main className='overflow-hidden'>
-        <section id='hero' className="flex justify-center items-center bg-neutral-900 h-screen lg:bg-fixed bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-1-1.jpg')]">
+      <main>
+        <section id='hero' className="flex justify-center items-center bg-neutral-900 h-screen lg:bg-fixed bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url("${raulidata.heroHatter.sourceUrl}")`}}>
           <div className='flex absolute top-5 right-5 text-xl gap-4'>
             <p className='text-white'>Language</p>
             <select name="Languages" onChange={handleSelect}>
@@ -58,28 +60,27 @@ export default function Home() {
             <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white fix'>
               <Link href="#contact" className='flex justify-center items-center gap-2'><AiOutlineForm className='h-6 w-6'/> Contact</Link>
             </button>
-
           </div>
 
           <div className='flex justify-center items-center '>
             <div className='flex flex-col gap-4 border-l-8 border-[#e94e1b] text-white capitalize w-11/12 lg:w-3/5 px-4'>
-              <Image src="https://rauli.hu/wp-content/uploads/2022/04/rauli-logo.png" width={150} height={100}/>
-              <h1 className='text-5xl lg:text-8xl'>exkluzív, innovatív, finn napelem tartószerkezet</h1>
-              <h2 className='text-xl lg:text-4xl'>Megérkezett közép- és kelet európába a teljesen fekete Finn acél napelem tartószerkezet a raulitól!</h2>
+              <Image src={raulidata.rauliLogo.sourceUrl} width={150} height={100}/>
+              <h1 className='text-5xl lg:text-8xl'>{raulidata.focim}</h1>
+              <h2 className='text-xl lg:text-4xl'>{raulidata.alcim}</h2>
               <div className='flex gap-4'>
                 <button className=' bg-[#e94e1b] px-8 py-2 text-xl lg:text-3xl'>
-                  <Link href="#fullblack">Bővebben</Link>
+                  <Link href="#fullblack">{raulidata.ctaBovebben}</Link>
                 </button>
                 <button className=' bg-[#e94f1b00] border border-[#e94e1b] px-4 py-1 lg:px-8 lg:py-2 text-lg lg:text-2xl'>
-                  <Link href="#fullblack">Nézd meg a videót</Link>
+                  <Link href="#fullblack">{raulidata.ctaVideo}</Link>
                 </button>
               </div>
             </div>
           </div>
         </section>
         
-        <nav className='fixed bottom-0 lg:top-0 lg:sticky border-t lg:border-b border-t-[#e94e1b] lg:border-b-[#e94e1b] z-50 w-[100vw]'>
-          <ul className='flex flex-wrap w-full justify-evenly lg:justify-center text-md lg:text-3xl text-white bg-neutral-900 cursor-pointer'>
+        <nav className='sticky top-0 border-t border-b border-t-[#e94e1b] border-b-[#e94e1b] z-50'>
+          <ul className='flex flex-wrap justify-evenly lg:justify-center text-md lg:text-3xl text-white bg-neutral-900 cursor-pointer'>
             <Link href="#fullblack"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>Full Black</li></Link>
             <Link href="#easyclick"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>Easyclick</li></Link>
             <Link href="#warranty"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/warranty-icon.svg" width={30} height={30}/>Garancia</li></Link>
@@ -90,7 +91,7 @@ export default function Home() {
 
         <section id='fullblack' className='w-full h-auto'>
           <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-2'>
-            <div className="relative col-span-1 row-span-1 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/rauli-hatter-web.jpg')]">
+            <div className="relative col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/rauli-hatter-web.jpg')]">
               <div className='text-right absolute right-0 bottom-0 p-4 text-white lg:w-4/5'>
                 <h1 className='text-5xl lg:text-8xl'>Full Black Design</h1>
                 <h2 className='text-xl lg:text-4xl'>Teljesen fekete megjelenés ami bármilyen tetőfelületet exkluzívvá tesz</h2>
@@ -103,7 +104,7 @@ export default function Home() {
           <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-2'>
             <Image className='col-span-1 row-span-1 w-full h-full' src="https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-2.jpg" width={1440} height={960}></Image>
             
-            <div className="relative col-span-1 row-span-1 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-12.jpg')]">
+            <div className="relative col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-12.jpg')]">
               
             </div>
             
@@ -318,4 +319,18 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+
+export async function getStaticProps() {
+  const { data:RauliCzData } = await client.query({ query: RAULI_CZ });
+  const raulidata = RauliCzData.pages.nodes[0].rauliMain;
+
+  return {
+    props: {
+      raulidata
+    },
+    revalidate: 5,
+  };
+
 }
