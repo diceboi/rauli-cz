@@ -79,36 +79,36 @@ export default function Home({ raulidata }) {
           </div>
         </section>
         
-        <nav className='sticky top-0 border-t border-b border-t-[#e94e1b] border-b-[#e94e1b] z-50'>
-          <ul className='flex flex-wrap justify-evenly lg:justify-center text-md lg:text-3xl text-white bg-neutral-900 cursor-pointer'>
-            <Link href="#fullblack"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>Full Black</li></Link>
-            <Link href="#easyclick"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>Easyclick</li></Link>
-            <Link href="#warranty"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/warranty-icon.svg" width={30} height={30}/>Garancia</li></Link>
-            <Link href="#media"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/media-icon.svg" width={30} height={30}/>Médiatár</li></Link>
-            <Link href="#extra"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-[#e94e1b] py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/extra-icon.svg" width={30} height={30}/>Extra</li></Link>
+        <nav className='sticky top-0 z-50'>
+          <ul className='flex flex-wrap justify-evenly lg:justify-center text-md lg:text-3xl text-white bg-[#e94e1b] cursor-pointer'>
+            <Link href="#fullblack"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>{raulidata.fullBlackBtn}</li></Link>
+            <Link href="#easyclick"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>{raulidata.easyclickBtn}</li></Link>
+            <Link href="#warranty"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/warranty-icon.svg" width={30} height={30}/>{raulidata.garanciaBtn}</li></Link>
+            <Link href="#media"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/media-icon.svg" width={30} height={30}/>{raulidata.mediatarBtn}</li></Link>
+            <Link href="#extra"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/extra-icon.svg" width={30} height={30}/>{raulidata.extraBtn}</li></Link>
           </ul>
         </nav>
 
         <section id='fullblack' className='w-full h-auto'>
           <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-2'>
-            <div className="relative col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/rauli-hatter-web.jpg')]">
+            <div className="relative col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 w-full h-auto bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url("${raulidata.fullblack1kep.sourceUrl}")`}}>
               <div className='text-right absolute right-0 bottom-0 p-4 text-white lg:w-4/5'>
-                <h1 className='text-5xl lg:text-8xl'>Full Black Design</h1>
-                <h2 className='text-xl lg:text-4xl'>Teljesen fekete megjelenés ami bármilyen tetőfelületet exkluzívvá tesz</h2>
+                <h1 className='text-5xl lg:text-8xl'>{raulidata.fullblackSectionFocim}</h1>
+                <h2 className='text-xl lg:text-4xl'>{raulidata.fullblackSectionAlcim}</h2>
               </div>
             </div>
-            <Image className='col-span-1 row-span-1 w-full h-full' src="https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-.jpg" width={1440} height={960}></Image>
-            <Image className='col-span-1 row-span-1 w-full h-full' src="https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-26.jpg" width={1440} height={960}></Image>
+            <Image className='col-span-1 row-span-1 w-full h-full' src={raulidata.fullblack2kep.sourceUrl} width={1440} height={960}></Image>
+            <Image className='col-span-1 row-span-1 w-full h-full' src={raulidata.fullblack3kep.sourceUrl} width={1440} height={960}></Image>
           </div>
 
           <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-2'>
-            <Image className='col-span-1 row-span-1 w-full h-full' src="https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-2.jpg" width={1440} height={960}></Image>
+            <Image className='col-span-1 row-span-1 w-full h-full' src={raulidata.fullblack4kep.sourceUrl} width={1440} height={960}></Image>
             
-            <div className="relative col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 w-full h-auto bg-center bg-no-repeat bg-cover bg-[url('https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-12.jpg')]">
+            <div className="relative col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 w-full h-auto bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url("${raulidata.fullblack5kep.sourceUrl}")`}}>
               
             </div>
             
-            <Image className='col-span-1 row-span-1 w-full h-full' src="https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-18.jpg" width={1440} height={960}></Image>
+            <Image className='col-span-1 row-span-1 w-full h-full' src={raulidata.fullblack6kep.sourceUrl} width={1440} height={960}></Image>
             
           </div>
         </section>
@@ -119,43 +119,43 @@ export default function Home({ raulidata }) {
               <div className='w-full h-full z-10 absolute'>
                 <div id='circle-telescopic' className='group h-12 w-12 absolute top-[25%] left-[40%] cursor-pointer'><BsCircleFill data-tooltip-target="tooltip-light" data-tooltip-style="light" className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b]'/><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b] animate-ping'/>
                 <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-md lg:text-xl py-2 z-10 group-hover:opacity-100 mr-8 lg:ml-14 px-3 pointer-events-none">
-                Telszkópos sínek
+                {raulidata.fullblackHotspotTeleszkop}
                 </div>
                 </div>
 
                 <div id='circle-quality' className='group cursor-pointer absolute top-[50%] left-[39%]'><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b]'/><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b] animate-ping'/>
                 
                 <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-md lg:text-xl py-2 z-10 group-hover:opacity-100 mr-8 lg:ml-14 px-3 pointer-events-none">
-                skandináv minőség
+                {raulidata.fullblackHotspotSkandinav}
                 </div>
                 
                 </div>
                 <div id='circle-steel' className='group cursor-pointer absolute top-[40%] left-[55%]'><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b]'/><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b] animate-ping'/>
                 
                 <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-md lg:text-xl py-2 z-10 group-hover:opacity-100 mr-8 lg:ml-14 px-3 pointer-events-none">
-                Nagy szilárdságú Finn acél
+                {raulidata.fullblackHotspotNagySzilardsag}
                 </div>
                 
                 </div>
                 <div id='circle-precision' className='group cursor-pointer absolute top-[35%] left-[75%]'><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b]'/><BsCircleFill className='absolute h-4 w-4 lg:h-8 lg:w-8 text-[#e94e1b] animate-ping'/>
                 
                 <div class=" w-auto opacity-0 bg-black text-white text-center absolute text-md lg:text-xl py-2 z-10 group-hover:opacity-100 mr-48 lg:mr-48 px-3 pointer-events-none">
-                Precíziós robotmegmunkálás
+                {raulidata.fullblackHotspotPrecizios}
                 </div>
                 
                 </div>
               </div>  
-              <Image src="https://rauli.hu/wp-content/uploads/2022/04/video-utan.jpg" width={1440} height={960} className="w-full h-auto"/>
+              <Image src={raulidata.fullblackHotspotKep.sourceUrl} width={1440} height={960} className="w-full h-auto"/>
               
             </div>
             <div className='flex flex-col gap-4 col-span-1 bg-neutral-900 justify-center items-center py-12'>
               <button className=' bg-[#e94f1b00] border border-[#e94e1b] px-8 py-2 text-2xl text-white my-6'>
-                <Link href="#fullblack">Nézd meg videón</Link>
+                <Link href="#fullblack">{raulidata.fullblackHotspotYoutubeGomb}</Link>
               </button>
-              <h2 className='text-white text-5xl' >Easyclick rendszer</h2>
-              <p className='text-white text-xl' >Extrém gyors szerelhetőség</p>
-              <p className='text-white text-xl' >nincs csavarozás</p>
-              <p className='text-white text-xl' >csak egy mozdulat bepattintani</p>
+              <h2 className='text-white text-5xl' >{raulidata.fullblackHotspotFocim}</h2>
+              <p className='text-white text-xl' >{raulidata.fullblackHotspotAlcim1}</p>
+              <p className='text-white text-xl' >{raulidata.fullblackHotspotAlcim2}</p>
+              <p className='text-white text-xl' >{raulidata.fullblackHotspotAlcim3}</p>
             </div>
           </div>
         </section>
@@ -163,40 +163,38 @@ export default function Home({ raulidata }) {
         <section id='warranty' className='flex justify-center items-center h-screen w-11/12 lg:w-8/12 m-auto py-12'>
           <div className='grid grid-cols-1 grid-rows-1 lg:grid-row-1 lg:grid-cols-2 gap-16'>
             <div className='col-span-1 text-5xl lg:text-8xl text-white'>
-              <h1 className='px-4 py-2 bg-[#e94e1b] w-fit'>A Leghosszabb </h1>
-              <h1 className='px-4 py-2 bg-[#e94e1b] w-fit'>garanciaidő</h1>
-              <h1 className='px-4 py-2 bg-[#e94e1b] w-fit'>a piacon</h1>
+              <h1 className='px-4 py-2 bg-[#e94e1b] w-fit'>{raulidata.garanciaSzoveg}</h1>
             </div>
 
             <div className='flex flex-col col-span-1 align-middle justify-center items-center'>
-              <h1 className='text-8xl font-black text-[#e94e1b]'>30 év</h1>
-              <h2 className='text-5xl'>Garancia</h2>
+              <h1 className='text-8xl font-black text-[#e94e1b]'>{raulidata.evek}</h1>
+              <h2 className='text-5xl'>{raulidata.garancia}</h2>
             </div>
 
           </div>
         </section>
 
         <section id='media' className='mx-auto w-11/12 lg:w-8/12 mb-40'> 
-          <h1 className='text-5xl lg:text-8xl text-white px-4 pt-2 mb-6 bg-[#e94e1b] w-fit'>Médiatár</h1>
+          <h1 className='text-5xl lg:text-8xl text-white px-4 pt-2 mb-6 bg-[#e94e1b] w-fit'>{raulidata.mediatarCim}</h1>
           <div className='grid grid-cols-1 grid-rows-3 gap-6 items-end'>
             
             
             <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 gap-6'>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/TU8mi6g-02M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/6T-XSqNcprE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/qY7Q1ifpK-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar1Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar2Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar3Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
 
             <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 gap-6'>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/_igmjK2oWbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/qaNmQCq5b5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/_vSz0tTkKgE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar4Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar5Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar6Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
 
             <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 gap-6'>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/4FE96PJNVyg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/PbRUAyuFaBw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/xS-PX6u4A8U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar7Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar8Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src={raulidata.mediatar9Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             
           </div>
@@ -204,72 +202,70 @@ export default function Home({ raulidata }) {
 
         <section id='extra' className='bg-neutral-900'>
           <div className='flex flex-col justify-center items-center w-11/12 lg:w-8/12 min-w-min mx-auto py-36'>
-            <h1 className='text-5xl lg:text-8xl text-white text-center'>Pénz - Idő - Energia</h1>
-            <h1 className='text-5xl lg:text-8xl text-white text-center'>Megtakarítás</h1>
-            <h2 className='text-3xl lg:text-8xl text-[#e94e1b] text-center'>Ami extra bevételt jelent</h2>
+            <h1 className='text-5xl lg:text-8xl text-white text-center'>{raulidata.extraFocim}</h1>
+            <h2 className='text-3xl lg:text-8xl text-[#e94e1b] text-center'>{raulidata.extraAlcim}</h2>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 1), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/Rauli-komponentti-11-2019-HR-jpg-18.jpg")`} } >
-            <Image src="https://rauli.hu/wp-content/uploads/2022/04/rauli-fekete.png" width={700} height={500} className="mb-[-75px] lg:mb-[-150px] z-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>Az univerzális alkatrészek anyagszámítása, és rendelése pofon egyszerű, nem igényel hosszú órákat</p>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 1), rgba(23, 23, 23, 0.9)), url("${raulidata.extraElsoSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraElsoSzakaszKep.sourceUrl} width={700} height={500} className="mb-[-75px] lg:mb-[-150px] z-10"/>
+            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraElsoSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/rauli-alkatreszek-abra.jpg")`} } >
-            <Image src="https://rauli.hu/wp-content/uploads/2022/04/raktarozas.png" width={400} height={400} className="mb-[-75px] lg:mb-[-100px]"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>A kevés darabszámnak köszönhetően könnyű és takarékos a raktározás</p>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraMasodikSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraMasodikSzakaszKep.sourceUrl} width={400} height={400} className="mb-[-75px] lg:mb-[-100px]"/>
+            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraMasodikSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/P1020792.jpg")`} } >
-            <Image src="https://rauli.hu/wp-content/uploads/2022/04/rauli-nincs-vagas.png" width={700} height={500} className="mb-[-75px] lg:mb-[-150px] z-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>a maximum 2,4 m hosszú sínek rakásolhatók, így dobozos autó belsejében is könnyedén szállíthatók.</p>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraHarmadikSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraHarmadikSzakaszKep.sourceUrl} width={700} height={500} className="mb-[-75px] lg:mb-[-150px] z-10"/>
+            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraHarmadikSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/konnyu-szallithatosag-rauli.jpg")`} } >
-            <Image src="https://rauli.hu/wp-content/uploads/2022/04/rauli-teleszkop.png" width={700} height={500} className="mb-[-50px] lg:mb-[-100px] ml-[-100px] lg:ml-[-140px] z-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>a teleszkópos sínek miatt nincs szükség helyszíni szabásra, a munka nagy mértékben felgyorsul</p>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraNegyedikSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraNegyedikSzakaszKep.sourceUrl} width={700} height={500} className="mb-[-50px] lg:mb-[-100px] ml-[-100px] lg:ml-[-140px] z-10"/>
+            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraNegyedikSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/easyclick-web.jpg")`} } >
-            <Image src="https://rauli.hu/wp-content/uploads/2022/04/easy-click-abra.png" width={500} height={300} className="mb-[50px] z-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>Az easyclick rendszernek hála szinte csavarozás nélkül telepíthető - szupergyors</p>
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraOtodikSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraOtodikSzakaszKep.sourceUrl} width={500} height={300} className="mb-[50px] z-10"/>
+            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraOtodikSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("https://rauli.hu/wp-content/uploads/2022/04/ido-rauli.jpg")`} } >
+          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraHatodikSzakaszHatter.sourceUrl}")`} } >
             
-            <h1 className='text-9xl font-black text-neutral-800 mb-[-30px]'>+40%</h1>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4 z-10'>a gyors és egyszerű szerelésnek köszönhetően akár 40%-al több telepítés kivitelezhető ugyanannyi emberrel, vagy kissebb csapat is elég ugyanahhoz a munkához</p>
+          <Image src={raulidata.extraHatodikSzakaszKep.sourceUrl} width={500} height={300} className="mb-[50px] z-10 opacity-10"/>
+            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4 z-10'>{raulidata.extraHatodikSzakaszSzoveg}</p>
           </div>
         </section>
 
         <section id='workshop' className='h-screen lg:h-[60vh] flex'>
           <div className='w-11/12 lg:w-8/12 m-auto'>
-            <h1 className='px-4 py-2 bg-[#e94e1b] w-fit text-5xl lg:text-8xl text-white'>Jelentkezz online</h1>
-            <h1 className='px-4 py-2 bg-[#e94e1b] w-fit text-5xl lg:text-8xl text-white'>Workshopra</h1>
-            <h3 className='text-3xl my-6'>Tetszik a Rauli rendszer? Megtanulnád az alapjait? Jelentkezz, és mi segítünk neked!</h3>
+            <h1 className='px-4 py-2 bg-[#e94e1b] w-fit text-5xl lg:text-8xl text-white'>{raulidata.workshopFocim}</h1>
+            <h3 className='text-3xl my-6'>{raulidata.workshopAlcim}</h3>
             <button className=' bg-[#e94f1b00] border border-[#e94e1b] px-8 py-2 text-2xl'>
-                <Link href="#fullblack" className='flex items-center'>Érdekel <BiChevronRight className='h-10 w-10'/></Link>
+                <Link href="#fullblack" className='flex items-center'>{raulidata.workshopGomb} <BiChevronRight className='h-10 w-10'/></Link>
             </button>
           </div>
         </section>
 
         <section id='contact' className='lg:h-screen'>
           <div className='w-11/12 lg:w-8/12 flex-col m-auto'>
-            <h1 className=' px-4 py-2 bg-[#e94e1b] w-fit text-5xl lg:text-8xl text-white'>Írj nekünk!</h1>
+            <h1 className=' px-4 py-2 bg-[#e94e1b] w-fit text-5xl lg:text-8xl text-white'>{raulidata.irjNekunkFocim}</h1>
               <form className='grid grid-cols-1 grid-rows-10 gap-4 my-6'>
                 <div className='row-span-1 flex flex-col'>
-                  <label className='text-2xl'>Vezetéknév <span className=' text-red-700'>*</span></label>
+                  <label className='text-2xl'>{raulidata.irjNekunkVezeteknev} <span className=' text-red-700'>*</span></label>
                   <input className=' border border-[#e94e1b] p-2' type="text" id='lastname' />
                 </div>
                 <div className='row-span-1 flex flex-col '>
-                  <label className='text-2xl'>Keresztnév <span className=' text-red-700'>*</span></label>
+                  <label className='text-2xl'>{raulidata.irjNekunkKeresztnev} <span className=' text-red-700'>*</span></label>
                   <input className=' border border-[#e94e1b] p-2' type="text" id='firstname' />
                 </div>
                 <div className='row-span-1 flex flex-col '>
-                  <label className='text-2xl'>Email <span className=' text-red-700'>*</span></label>
+                  <label className='text-2xl'>{raulidata.irjNekunkEmail} <span className=' text-red-700'>*</span></label>
                   <input className=' border border-[#e94e1b] p-2' type="email" id='email' />
                 </div>
                 <div className='row-span-6 flex flex-col '>
-                  <label className='text-2xl'>Rövid üzenet <span className=' text-red-700'>*</span></label>
+                  <label className='text-2xl'>{raulidata.irjNekunkRovidUzenet} <span className=' text-red-700'>*</span></label>
                   <textarea className=' border border-[#e94e1b] p-2' rows="10" id='lastname' />
                 </div>
                 <div className='row-span-1 flex flex-col w-fit'>
@@ -282,35 +278,29 @@ export default function Home({ raulidata }) {
         <section id='footer' className=' bg-neutral-900'>
           <div className='w-11/12 lg:w-8/12 m-auto grid grid-cols-1 lg:grid-cols-3 py-6 justify-center items-center'>
             <div className='relative col-span-1 flex flex-col justify-center items-center text-center text-white'>
-              <h3 className='text-xl z-10'>Rendelés</h3>
-              <p className=' tracking-widest z-10'>Király Éva</p>
-              <p className=' text-2xl mb-6 z-10'>+36 70 / 645 3325</p>
-              <h3 className='text-xl z-10' >További információk</h3>
-              <p className=' tracking-widest z-10'>Csomós Tibor</p>
-              <p className=' text-2xl mb-6 z-10'>+36 20 / 222 4 222</p>
+              <h3 className='text-xl z-10'>{raulidata.footerRendeles}</h3>
+              <p className=' tracking-widest z-10'>{raulidata.footerRendelesNev}</p>
+              <p className=' text-2xl mb-6 z-10'>{raulidata.footerRendelesTelefonszam}</p>
+              <h3 className='text-xl z-10' >{raulidata.footerTovabbiInformacio}</h3>
+              <p className=' tracking-widest z-10'>{raulidata.footerTovabbiInformacioNev}</p>
+              <p className=' text-2xl mb-6 z-10'>{raulidata.footerTovabbiInformacioTelefonszam}</p>
               <FaPhoneAlt className='absolute h-full w-auto opacity-10 z-0'/>
             </div>
             <div className='col-span-1 flex flex-col justify-center items-center py-4'>
-              <Image src="https://rauli.hu/wp-content/uploads/2022/04/rauli-map-europe.png" width={500} height={500} />
+              <Image src={raulidata.footerKep.sourceUrl} width={500} height={500} />
             </div>
             <div className='col-span-1 flex flex-col justify-center items-center ml-0 lg:ml-24 gap-6'>
-              <Link href="https://profigreentech.hu"><Image src="https://rauli.hu/wp-content/uploads/2022/04/PGT-LOGO-white.png" width={110} height={100}/></Link>
-              <Link href=""><Image src="https://rauli.hu/wp-content/uploads/2022/04/pgmlogo.png" width={150} height={100}/></Link>
-              <Link href="https://fullblack.hu"><Image src="https://rauli.hu/wp-content/uploads/2022/04/full-black-logo.png" width={260} height={100}/></Link>
+              <Link href="https://profigreentech.hu"><Image src={raulidata.footer1Logo.sourceUrl} width={110} height={100}/></Link>
+              <Link href=""><Image src={raulidata.footer2Logo.sourceUrl} width={150} height={100}/></Link>
+              <Link href="https://fullblack.hu"><Image src={raulidata.footer3Logo.sourceUrl} width={260} height={100}/></Link>
             </div>
           </div>
           <div className='flex flex-col gap-4 justify-center items-center w-full bg-[#e94e1b] py-6'>
-            <h3 className='text-white text-md lg:text-xl w-11/12 text-center'>A profi teto kft. - profi greentech divíziója a rauli termékek kizárólagos disztribútora a közép- és kelet európai régióban:</h3>
+            <h3 className='text-white text-md lg:text-xl w-11/12 text-center'>{raulidata.footerNarancsElsoSzoveg}</h3>
             <ul className='flex flex-wrap gap-2 text-white text-sm tracking-widest w-11/12 lg:w-6/12 justify-center lg:justify-evenly'>
-              <li>Magyarország</li>
-              <li>Csehország</li>
-              <li>Magyarország</li>
-              <li>Szlovákia</li>
-              <li>Ausztria</li>
-              <li>Horvátország</li>
-              <li>Szlovénia</li>
+              <li>{raulidata.footerNarancsOrszagok}</li>
             </ul>
-            <Link className='text-white opacity-50 underline text-md pb-24' href="/adatkezelesi-nyilatkozat" >Adatkezelési nyilatkozat</Link>
+            <Link className='text-white opacity-50 underline text-md pb-24 lg:pb-0' href="/adatkezelesi-nyilatkozat" >{raulidata.footerNarancsAdatkezelesiNyilatkozat}</Link>
 
           </div>
 
