@@ -3,11 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Router from 'next/router'
 import client from '../apollo-client'
+import { useState } from 'react'
 import { BsCircleFill } from 'react-icons/bs'
 import { BiChevronRight } from 'react-icons/bi'
 import { FaPhoneAlt } from 'react-icons/fa'
 import { FaChalkboardTeacher } from 'react-icons/fa'
 import { AiOutlineForm } from 'react-icons/ai'
+import { GrClose } from 'react-icons/gr'
 
 import { gql } from "@apollo/client";
 
@@ -31,6 +33,9 @@ export default function Home({ raulidata }) {
     } 
   };
 
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
+
   return (
     <>
       <Head>
@@ -53,7 +58,7 @@ export default function Home({ raulidata }) {
             </select>
           </div>
 
-          <div className='flex bottom-20 lg:bottom-5 right-2 gap-2 fixed z-50 overflow-hidden'>
+          <div className='flex bottom-2 right-2 gap-2 fixed z-50 overflow-hidden'>
             <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white fix'>
               <Link href="#workshop" className='flex justify-center items-center gap-2'><FaChalkboardTeacher className='h-6 w-6'/> Workshop</Link>
             </button>
@@ -71,21 +76,27 @@ export default function Home({ raulidata }) {
                 <button className=' bg-[#e94e1b] px-8 py-2 text-xl lg:text-3xl'>
                   <Link href="#fullblack">{raulidata.ctaBovebben}</Link>
                 </button>
-                <button className=' bg-[#e94f1b00] border border-[#e94e1b] px-4 py-1 lg:px-8 lg:py-2 text-lg lg:text-2xl'>
-                  <Link href="#fullblack">{raulidata.ctaVideo}</Link>
+                <button onClick={() => setIsOpen1(true)} className=' bg-[#e94f1b00] border border-[#e94e1b] px-4 py-1 lg:px-8 lg:py-2 text-lg lg:text-2xl'>
+                  {raulidata.ctaVideo}
                 </button>
               </div>
             </div>
           </div>
+          {isOpen1 &&(
+          <div className='fixed flex justify-center items-center w-full h-screen bg-[#000000d0] z-[999]'>
+            <button className='absolute top-2 right-2' onClick={() => setIsOpen1(false)}><GrClose color="#fff" className=' w-8 h-8 bg-white'/></button>
+            <iframe width="75%" height="auto" src={raulidata.mediatar1Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          )}
         </section>
         
-        <nav className='sticky top-0 z-50'>
-          <ul className='flex flex-wrap justify-evenly lg:justify-center text-md lg:text-3xl text-white bg-[#e94e1b] cursor-pointer'>
-            <Link href="#fullblack"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>{raulidata.fullBlackBtn}</li></Link>
-            <Link href="#easyclick"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>{raulidata.easyclickBtn}</li></Link>
-            <Link href="#warranty"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/warranty-icon.svg" width={30} height={30}/>{raulidata.garanciaBtn}</li></Link>
-            <Link href="#media"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/media-icon.svg" width={30} height={30}/>{raulidata.mediatarBtn}</li></Link>
-            <Link href="#extra"><li className='flex flex-col lg:flex-row lg:gap-2 items-center hover:bg-black py-2 px-2 lg:py-4 lg:px-8'><Image src="https://rauli.hu/wp-content/uploads/2023/03/extra-icon.svg" width={30} height={30}/>{raulidata.extraBtn}</li></Link>
+        <nav className='sticky flex justify-center top-0 z-50 w-full bg-[#e94e1b]'>
+          <ul className='grid grid-cols-5 grid-wrap gap-0 lg:justify-center text-md lg:text-3xl text-white cursor-pointer lg:w-8/12'>
+            <Link href="#fullblack" className='flex justify-center'><li className='flex flex-col lg:flex-row lg:gap-2 items-center justify-center hover:bg-neutral-900 py-2 px-2 lg:py-4 lg:px-8 w-full'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>{raulidata.fullBlackBtn}</li></Link>
+            <Link href="#easyclick" className='flex justify-center'><li className='flex flex-col lg:flex-row lg:gap-2 items-center justify-center hover:bg-neutral-900 py-2 px-2 lg:py-4 lg:px-8 w-full'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>{raulidata.easyclickBtn}</li></Link>
+            <Link href="#warranty" className='flex justify-center'><li className='flex flex-col lg:flex-row lg:gap-2 items-center justify-center hover:bg-neutral-900 py-2 px-2 lg:py-4 lg:px-8 w-full'><Image src="https://rauli.hu/wp-content/uploads/2023/03/warranty-icon.svg" width={30} height={30}/>{raulidata.garanciaBtn}</li></Link>
+            <Link href="#media" className='flex justify-center'><li className='flex flex-col lg:flex-row lg:gap-2 items-center justify-center hover:bg-neutral-900 py-2 px-2 lg:py-4 lg:px-8 w-full'><Image src="https://rauli.hu/wp-content/uploads/2023/03/media-icon.svg" width={30} height={30}/>{raulidata.mediatarBtn}</li></Link>
+            <Link href="#extra" className='flex justify-center'><li className='flex flex-col lg:flex-row lg:gap-2 items-center justify-center hover:bg-neutral-900 py-2 px-2 lg:py-4 lg:px-8 w-full'><Image src="https://rauli.hu/wp-content/uploads/2023/03/extra-icon.svg" width={30} height={30}/>{raulidata.extraBtn}</li></Link>
           </ul>
         </nav>
 
@@ -149,8 +160,8 @@ export default function Home({ raulidata }) {
               
             </div>
             <div className='flex flex-col gap-4 col-span-1 bg-neutral-900 justify-center items-center py-12'>
-              <button className=' bg-[#e94f1b00] border border-[#e94e1b] px-8 py-2 text-2xl text-white my-6'>
-                <Link href="#fullblack">{raulidata.fullblackHotspotYoutubeGomb}</Link>
+              <button onClick={() => setIsOpen3(true)} className=' bg-[#e94f1b00] border border-[#e94e1b] px-8 py-2 text-2xl text-white my-6'>
+                {raulidata.fullblackHotspotYoutubeGomb}
               </button>
               <h2 className='text-white text-5xl' >{raulidata.fullblackHotspotFocim}</h2>
               <p className='text-white text-xl' >{raulidata.fullblackHotspotAlcim1}</p>
@@ -158,6 +169,13 @@ export default function Home({ raulidata }) {
               <p className='text-white text-xl' >{raulidata.fullblackHotspotAlcim3}</p>
             </div>
           </div>
+
+          {isOpen3 && (
+              <div className='fixed flex justify-center items-center w-full h-screen bg-[#000000d0] z-[998]'>
+                <button className='absolute top-2 right-2' onClick={() => setIsOpen3(false)}><GrClose color="#fff" className=' w-8 h-8 bg-white'/></button>
+                <iframe width="75%" height="auto" src="youtube.com/watch?v=mMaw1LMClwQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            )}
         </section>
 
         <section id='warranty' className='flex justify-center items-center h-screen w-11/12 lg:w-8/12 m-auto py-12'>
@@ -206,36 +224,36 @@ export default function Home({ raulidata }) {
             <h2 className='text-3xl lg:text-8xl text-[#e94e1b] text-center'>{raulidata.extraAlcim}</h2>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 1), rgba(23, 23, 23, 0.9)), url("${raulidata.extraElsoSzakaszHatter.sourceUrl}")`} } >
-            <Image src={raulidata.extraElsoSzakaszKep.sourceUrl} width={700} height={500} className="mb-[-75px] lg:mb-[-150px] z-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraElsoSzakaszSzoveg}</p>
+          <div className='grid grid-cols-1 lg:grid-cols-2 grid-rows-1 items-center align-middle h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 1), rgba(23, 23, 23, 0.9)), url("${raulidata.extraElsoSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraElsoSzakaszKep.sourceUrl} width={400} height={200} className="col-span-1 justify-self-center lg:justify-self-end z-10 mr-0 lg:-mr-20 w-2/3 lg:w-96"/>
+            <p className='col-span-1 text-xl lg:text-3xl text-white text-center border border-[#ffffff2a] bg-neutral-900 w-11/12 lg:w-3/6 justify-self-center lg:mb-0 mb-12 lg:justify-self-start py-6 px-4'>{raulidata.extraElsoSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraMasodikSzakaszHatter.sourceUrl}")`} } >
-            <Image src={raulidata.extraMasodikSzakaszKep.sourceUrl} width={400} height={400} className="mb-[-75px] lg:mb-[-100px]"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraMasodikSzakaszSzoveg}</p>
+          <div className='grid grid-cols-1 lg:grid-cols-2 grid-rows-1 items-center align-middle h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraMasodikSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraMasodikSzakaszKep.sourceUrl} width={400} height={400} className="col-span-1 lg:justify-self-start justify-self-center z-10 mr-0 lg:-ml-20 w-2/3 lg:w-96"/>
+            <p className='col-span-1 lg:-order-1 text-xl lg:text-3xl text-white text-center border border-[#ffffff2a] bg-neutral-900 w-11/12 lg:w-3/6 justify-self-center lg:mb-0 mb-12 lg:justify-self-end py-6 px-4 '>{raulidata.extraMasodikSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraHarmadikSzakaszHatter.sourceUrl}")`} } >
-            <Image src={raulidata.extraHarmadikSzakaszKep.sourceUrl} width={700} height={500} className="mb-[-75px] lg:mb-[-150px] z-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraHarmadikSzakaszSzoveg}</p>
+          <div className='grid grid-cols-1 lg:grid-cols-2 grid-rows-1 items-center align-middle h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraHarmadikSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraHarmadikSzakaszKep.sourceUrl} width={400} height={200} className="col-span-1 justify-self-center lg:justify-self-end z-10 mr-0 lg:-mr-20 w-2/3 lg:w-96"/>
+            <p className='col-span-1 text-xl lg:text-3xl text-white text-center border border-[#ffffff2a] bg-neutral-900 w-11/12 lg:w-3/6 justify-self-center lg:mb-0 mb-12 lg:justify-self-start py-6 px-4'>{raulidata.extraHarmadikSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraNegyedikSzakaszHatter.sourceUrl}")`} } >
-            <Image src={raulidata.extraNegyedikSzakaszKep.sourceUrl} width={700} height={500} className="mb-[-50px] lg:mb-[-100px] ml-[-100px] lg:ml-[-140px] z-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraNegyedikSzakaszSzoveg}</p>
+          <div className='grid grid-cols-1 lg:grid-cols-2 grid-rows-1 items-center align-middle h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraNegyedikSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraNegyedikSzakaszKep.sourceUrl} width={400} height={200} className="col-span-1 lg:justify-self-start justify-self-center z-10 mr-0 lg:-ml-16 w-2/3 lg:w-96"/>
+            <p className='col-span-1 lg:-order-1 text-xl lg:text-3xl text-white text-center border border-[#ffffff2a] bg-neutral-900 w-11/12 lg:w-3/6 justify-self-center lg:mb-0 mb-12 lg:justify-self-end py-6 px-4 '>{raulidata.extraNegyedikSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraOtodikSzakaszHatter.sourceUrl}")`} } >
-            <Image src={raulidata.extraOtodikSzakaszKep.sourceUrl} width={500} height={300} className="mb-[50px] z-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4'>{raulidata.extraOtodikSzakaszSzoveg}</p>
+          <div className='grid grid-cols-1 lg:grid-cols-2 grid-rows-1 items-center align-middle h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraOtodikSzakaszHatter.sourceUrl}")`} } >
+            <Image src={raulidata.extraOtodikSzakaszKep.sourceUrl} width={400} height={200} className="col-span-1 justify-self-center lg:justify-self-end z-10 mr-0 lg:-mr-20 w-2/3 lg:w-96"/>
+            <p className='col-span-1 text-xl lg:text-3xl text-white text-center border border-[#ffffff2a] bg-neutral-900 w-11/12 lg:w-3/6 justify-self-center lg:mb-0 mb-12 lg:justify-self-start py-6 px-4 '>{raulidata.extraOtodikSzakaszSzoveg}</p>
           </div>
 
-          <div className='relative flex flex-col justify-center items-center h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraHatodikSzakaszHatter.sourceUrl}")`} } >
-            
-          <Image src={raulidata.extraHatodikSzakaszKep.sourceUrl} width={500} height={300} className="mb-[50px] z-10 opacity-10"/>
-            <p className='text-xl lg:text-3xl text-white text-center bg-[#e94e1b] w-11/12 lg:w-3/6 py-2 px-4 z-10'>{raulidata.extraHatodikSzakaszSzoveg}</p>
+          <div className='grid grid-cols-1 lg:grid-cols-2 grid-rows-1 items-center align-middle h-[60vh] overflow-hidden bg-center bg-no-repeat bg-cover bg-fixed backdrop-blur-lg' style={{backgroundImage: `linear-gradient(to bottom, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9)), url("${raulidata.extraHatodikSzakaszHatter.sourceUrl}")`} } >    
+          <Image src={raulidata.extraHatodikSzakaszKep.sourceUrl} width={400} height={200} className="col-span-1 lg:justify-self-start justify-self-center z-10 mr-0 lg:-ml-20 w-2/3 lg:w-96 opacity-10"/>
+            <p className='col-span-1 lg:-order-1 text-xl lg:text-3xl text-white text-center border border-[#ffffff2a] bg-neutral-900 w-11/12 lg:w-3/6 justify-self-center lg:mb-0 mb-12 lg:justify-self-end py-6 px-4 '>{raulidata.extraHatodikSzakaszSzoveg}</p>
           </div>
+
         </section>
 
         <section id='workshop' className='h-screen lg:h-[60vh] flex'>
