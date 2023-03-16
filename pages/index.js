@@ -44,7 +44,7 @@ export default function Home({ raulidata }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://rauli.hu/wp-content/uploads/2022/05/rauli-favicon.png" />
       </Head>
-      <main className='w-[100vw] overflow-hidden'>
+      <main>
         <section id='hero' className="flex justify-center items-center bg-neutral-900 h-screen lg:bg-fixed bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url("${raulidata.heroHatter.sourceUrl}")`}}>
           <div className='flex absolute top-5 right-5 text-xl gap-4'>
             <p className='text-white'>Language</p>
@@ -58,15 +58,13 @@ export default function Home({ raulidata }) {
             </select>
           </div>
 
-          <div className='fixed bottom-2 right-2 z-50'>
-            <div className='flex justify-end items-center gap-2'>
-              <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white'>
-                <Link href="#workshop" className='flex justify-center items-center gap-2'><FaChalkboardTeacher className='h-6 w-6'/> Workshop</Link>
-              </button>
-              <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white '>
-                <Link href="#contact" className='flex justify-center items-center gap-2'><AiOutlineForm className='h-6 w-6'/> Contact</Link>
-              </button>
-            </div>
+          <div className='grid grid-cols-2 bottom-2 fixed z-50 gap-4'>
+            <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white'>
+              <Link href="#workshop" className='flex justify-center items-center gap-2'><FaChalkboardTeacher className='h-6 w-6'/> Workshop</Link>
+            </button>
+            <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white '>
+              <Link href="#contact" className='flex justify-center items-center gap-2'><AiOutlineForm className='h-6 w-6'/> Contact</Link>
+            </button>
           </div>
 
           <div className='flex justify-center items-center '>
@@ -92,7 +90,7 @@ export default function Home({ raulidata }) {
           )}
         </section>
         
-        <nav className='sticky flex justify-center top-0 z-50 w-full bg-[#e94e1b]'>
+        <nav className='sticky top-0 flex justify-center z-50 w-full bg-[#e94e1b]'>
           <ul className='grid grid-cols-5 grid-wrap gap-0 lg:justify-center text-md lg:text-3xl text-white cursor-pointer lg:w-8/12'>
             <Link href="#fullblack" className='flex justify-center'><li className='flex flex-col lg:flex-row lg:gap-2 items-center justify-center hover:bg-neutral-900 py-2 px-2 lg:py-4 lg:px-8 w-full'><Image src="https://rauli.hu/wp-content/uploads/2023/03/fullblack-icon.svg" width={30} height={30}/>{raulidata.fullBlackBtn}</li></Link>
             <Link href="#easyclick" className='flex justify-center'><li className='flex flex-col lg:flex-row lg:gap-2 items-center justify-center hover:bg-neutral-900 py-2 px-2 lg:py-4 lg:px-8 w-full'><Image src="https://rauli.hu/wp-content/uploads/2023/03/easyclick-icon.svg" width={30} height={30}/>{raulidata.easyclickBtn}</li></Link>
