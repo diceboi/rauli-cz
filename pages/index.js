@@ -85,7 +85,7 @@ export default function Home({ raulidata }) {
           {isOpen1 &&(
           <div className='fixed flex justify-center items-center w-full h-screen bg-[#000000d0] z-[999]'>
             <button className='absolute top-2 right-2' onClick={() => setIsOpen1(false)}><GrClose color="#fff" className=' w-8 h-8 bg-white'/></button>
-            <iframe width="75%" height="auto" src={raulidata.mediatar1Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="75%" height="50%" src={raulidata.mediatar1Video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
           )}
         </section>
@@ -163,6 +163,14 @@ export default function Home({ raulidata }) {
               <button onClick={() => setIsOpen3(true)} className='bg-[#e94f1b00] border border-[#e94e1b] px-8 py-2 text-2xl text-white my-6'>
                 {raulidata.fullblackHotspotYoutubeGomb}
               </button>
+
+              {isOpen3 && (
+              <div className='fixed top-0 left-0 flex justify-center items-center w-full h-screen bg-[#000000d0] z-[998]'>
+                <button className='absolute top-2 right-2' onClick={() => setIsOpen3(false)}><GrClose color="#fff" className='w-8 h-8 bg-white'/></button>
+                <iframe width="75%" height="50%" src={raulidata.fullblackHotspotYoutubeVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              )}
+
               <h2 className='text-white text-5xl' >{raulidata.fullblackHotspotFocim}</h2>
               <p className='text-white text-xl' >{raulidata.fullblackHotspotAlcim1}</p>
               <p className='text-white text-xl' >{raulidata.fullblackHotspotAlcim2}</p>
@@ -170,12 +178,7 @@ export default function Home({ raulidata }) {
             </div>
           </div>
 
-          {isOpen3 && (
-              <div className='fixed flex justify-center items-center w-full h-screen bg-[#000000d0] z-[998]'>
-                <button className='absolute top-2 right-2' onClick={() => setIsOpen3(false)}><GrClose color="#fff" className='w-8 h-8 bg-white'/></button>
-                <iframe width="75%" height="auto" src={raulidata.fullblackHotspotYoutubeVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-            )}
+          
         </section>
 
         <section id='warranty' className='flex justify-center items-center h-screen w-11/12 lg:w-8/12 m-auto py-12'>
