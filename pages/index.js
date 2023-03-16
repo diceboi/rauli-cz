@@ -10,12 +10,13 @@ import { FaPhoneAlt } from 'react-icons/fa'
 import { FaChalkboardTeacher } from 'react-icons/fa'
 import { AiOutlineForm } from 'react-icons/ai'
 import { GrClose } from 'react-icons/gr'
-
-import { gql } from "@apollo/client";
+import { useMutation } from '@apollo/client'
+import { SUBMIT_FORM } from '@/lib/queries'
+import { IRJ_NEUNK_FORM } from '@/lib/queries'
 
 import { RAULI_CZ } from '@/lib/queries'
 
-export default function Home({ raulidata }) {
+export default function Home({ raulidata, irjnekunkdata }) {
 
   const handleSelect = (event) => {
     const selectedValue = event.target.value;
@@ -35,6 +36,34 @@ export default function Home({ raulidata }) {
 
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
+
+  const emailField = irjnekunkdata.find((field) => field.__typename === 'EmailField');
+  const messageField = irjnekunkdata.find((field) => field.__typename === 'TextAreaField');
+
+  const [submitForm, { loading, error }] = useMutation(SUBMIT_FORM);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+  
+    const firstName = document.getElementById('firstname').value;
+    const lastName = document.getElementById('lastname').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+  
+    submitForm({
+      variables: {
+        input: {
+          formId: '1',
+          inputValues: [
+            { fieldId: '2', value: firstName },
+            { fieldId: '3', value: lastName },
+            { fieldId: '4', value: email },
+            { fieldId: '5', value: message },
+          ],
+        },
+      },
+    });
+  };
 
   return (
     <>
@@ -100,7 +129,7 @@ export default function Home({ raulidata }) {
           </ul>
         </nav>
 
-        <section id='fullblack' className='w-full h-auto'>
+        <section id='fullblack' className='w-[100vw] h-auto'>
           <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-2'>
             <div className="relative col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 w-full h-auto bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url("${raulidata.fullblack1kep.sourceUrl}")`}}>
               <div className='text-right absolute right-0 bottom-0 p-4 text-white lg:w-4/5'>
@@ -272,22 +301,22 @@ export default function Home({ raulidata }) {
         <section id='contact' className='lg:h-screen'>
           <div className='w-11/12 lg:w-8/12 flex-col m-auto'>
             <h1 className=' px-4 py-2 bg-[#e94e1b] w-fit text-5xl lg:text-8xl text-white'>{raulidata.irjNekunkFocim}</h1>
-              <form className='grid grid-cols-1 grid-rows-10 gap-4 my-6'>
+              <form onSubmit={onSubmit} className='grid grid-cols-1 grid-rows-10 gap-4 my-6'>
                 <div className='row-span-1 flex flex-col'>
-                  <label className='text-2xl'>{raulidata.irjNekunkVezeteknev} <span className=' text-red-700'>*</span></label>
-                  <input className=' border border-[#e94e1b] p-2' type="text" id='lastname' />
+                  <label className='text-2xl'>Vezetéknév <span className=' text-red-700'>*</span></label>
+                  <input id="lastname" className='border border-[#e94e1b] p-2' type="text" />
                 </div>
                 <div className='row-span-1 flex flex-col '>
-                  <label className='text-2xl'>{raulidata.irjNekunkKeresztnev} <span className=' text-red-700'>*</span></label>
-                  <input className=' border border-[#e94e1b] p-2' type="text" id='firstname' />
+                  <label className='text-2xl'>Keresztnév <span className=' text-red-700'>*</span></label>
+                  <input id="firstname" className=' border border-[#e94e1b] p-2' type="text" />
                 </div>
                 <div className='row-span-1 flex flex-col '>
-                  <label className='text-2xl'>{raulidata.irjNekunkEmail} <span className=' text-red-700'>*</span></label>
-                  <input className=' border border-[#e94e1b] p-2' type="email" id='email' />
+                  <label className='text-2xl'>{emailField.label} <span className=' text-red-700'>*</span></label>
+                  <input id="email" className=' border border-[#e94e1b] p-2' type="email" />
                 </div>
                 <div className='row-span-6 flex flex-col '>
-                  <label className='text-2xl'>{raulidata.irjNekunkRovidUzenet} <span className=' text-red-700'>*</span></label>
-                  <textarea className=' border border-[#e94e1b] p-2' rows="10" id='lastname' />
+                  <label className='text-2xl'>{messageField.label} <span className=' text-red-700'>*</span></label>
+                  <textarea id="message" className=' border border-[#e94e1b] p-2' rows="10" />
                 </div>
                 <div className='row-span-1 flex flex-col w-fit'>
                   <input type="submit" className=' bg-[#e94e1b] border border-[#e94e1b] px-8 py-2 text-2xl text-white cursor-pointer'/>  
@@ -337,9 +366,13 @@ export async function getStaticProps() {
   const { data:RauliCzData } = await client.query({ query: RAULI_CZ });
   const raulidata = RauliCzData.pages.nodes[0].rauliMain;
 
+  const { data:IrjNekunkData } = await client.query({ query: IRJ_NEUNK_FORM });
+  const irjnekunkdata = IrjNekunkData.gfForm.formFields.nodes;
+
   return {
     props: {
-      raulidata
+      raulidata,
+      irjnekunkdata,
     },
     revalidate: 5,
   };
