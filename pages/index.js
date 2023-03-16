@@ -44,7 +44,7 @@ export default function Home({ raulidata }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://rauli.hu/wp-content/uploads/2022/05/rauli-favicon.png" />
       </Head>
-      <main>
+      <main className='w-[100vw] overflow-hidden'>
         <section id='hero' className="flex justify-center items-center bg-neutral-900 h-screen lg:bg-fixed bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url("${raulidata.heroHatter.sourceUrl}")`}}>
           <div className='flex absolute top-5 right-5 text-xl gap-4'>
             <p className='text-white'>Language</p>
@@ -58,13 +58,15 @@ export default function Home({ raulidata }) {
             </select>
           </div>
 
-          <div className='flex bottom-2 right-2 gap-2 fixed z-50 overflow-hidden'>
-            <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white fix'>
-              <Link href="#workshop" className='flex justify-center items-center gap-2'><FaChalkboardTeacher className='h-6 w-6'/> Workshop</Link>
-            </button>
-            <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white fix'>
-              <Link href="#contact" className='flex justify-center items-center gap-2'><AiOutlineForm className='h-6 w-6'/> Contact</Link>
-            </button>
+          <div className='fixed bottom-2 right-2 z-50'>
+            <div className='flex justify-end items-center gap-2'>
+              <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white'>
+                <Link href="#workshop" className='flex justify-center items-center gap-2'><FaChalkboardTeacher className='h-6 w-6'/> Workshop</Link>
+              </button>
+              <button className=' bg-[#e94e1b] px-5 py-1 lg:px-8 lg:py-2 text-xl lg:text-3xl text-white '>
+                <Link href="#contact" className='flex justify-center items-center gap-2'><AiOutlineForm className='h-6 w-6'/> Contact</Link>
+              </button>
+            </div>
           </div>
 
           <div className='flex justify-center items-center '>
