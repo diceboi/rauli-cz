@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Router from 'next/router'
 import client from '../apollo-client'
+import submitForm from '../lib/submitform'
+import axios from "axios"
 import { useState } from 'react'
 import { BsCircleFill } from 'react-icons/bs'
 import { BiChevronRight } from 'react-icons/bi'
@@ -10,17 +12,15 @@ import { FaPhoneAlt } from 'react-icons/fa'
 import { FaChalkboardTeacher } from 'react-icons/fa'
 import { AiOutlineForm } from 'react-icons/ai'
 import { GrClose } from 'react-icons/gr'
-import { useMutation } from '@apollo/client'
-import { SUBMIT_FORM } from '@/lib/queries'
-import { IRJ_NEUNK_FORM } from '@/lib/queries'
+import { useMutation, gql } from '@apollo/client'
 
-import { RAULI_CZ } from '@/lib/queries'
+import { RAULI_CZ } from '../lib/queries'
 
-export default function Home({ raulidata, irjnekunkdata }) {
+export default function Home({ raulidata }) {
 
   const handleSelect = (event) => {
     const selectedValue = event.target.value;
-    // Navigate to the selected page
+    // Nyelvválasztó linkek
     if (selectedValue === 'Hun') {
       Router.push('http://rauli.hu');
     } else if (selectedValue === 'Ger') {
@@ -34,36 +34,55 @@ export default function Home({ raulidata, irjnekunkdata }) {
     } 
   };
 
+  // Popup nyitások zárások
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
 
-  const emailField = irjnekunkdata.find((field) => field.__typename === 'EmailField');
-  const messageField = irjnekunkdata.find((field) => field.__typename === 'TextAreaField');
+  // form küldés
 
-  const [submitForm, { loading, error }] = useMutation(SUBMIT_FORM);
+  //Gravity API kulcsok:
+  //Fogyasztási cikkek: ck_09053fa369ba2de5fb13221f3754ec7564e4b62c
+  //Ügyfélszolálat: cs_98846f9265e0a714d845f0f04752dd336758da80
+ 
+const axios = require('axios');
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-  
-    const firstName = document.getElementById('firstname').value;
-    const lastName = document.getElementById('lastname').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-  
-    submitForm({
-      variables: {
-        input: {
-          formId: '1',
-          inputValues: [
-            { fieldId: '2', value: firstName },
-            { fieldId: '3', value: lastName },
-            { fieldId: '4', value: email },
-            { fieldId: '5', value: message },
-          ],
+const FORM_ID = 1; // replace with your Gravity Forms form ID
+
+const USERNAME = 'ck_09053fa369ba2de5fb13221f3754ec7564e4b62c';
+const PASSWORD = 'cs_98846f9265e0a714d845f0f04752dd336758da80';
+const ENCODED_CREDENTIALS = btoa(`${USERNAME}:${PASSWORD}`); // encode credentials in base64
+
+const submitForm = async (formData) => {
+  try {
+    const response = await axios.post(
+      `https://server.profigreentech.hu/wp-json/gf/v2/forms/${FORM_ID}/submissions`,
+      formData,
+      {
+        headers: {
+          Authorization: `Basic ${ENCODED_CREDENTIALS}`,
         },
-      },
-    });
+      }
+    );
+    console.log('Form submitted successfully:', response.data);
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  }
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+
+  const formData = {
+    input_8: document.getElementById('lastname').value,
+    input_9: document.getElementById('firstname').value,
+    input_4: document.getElementById('email').value,
+    input_5: document.getElementById('message').value,
+    input_11_1: document.getElementById('consent').checked ? '1' : '',
   };
+
+  submitForm(formData);
+};
+
 
   return (
     <>
@@ -129,7 +148,7 @@ export default function Home({ raulidata, irjnekunkdata }) {
           </ul>
         </nav>
 
-        <section id='fullblack' className='w-[100vw] h-auto'>
+        <section id='fullblack' className='w-full h-auto'>
           <div className='grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-2'>
             <div className="relative col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 w-full h-auto bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url("${raulidata.fullblack1kep.sourceUrl}")`}}>
               <div className='text-right absolute right-0 bottom-0 p-4 text-white lg:w-4/5'>
@@ -301,7 +320,7 @@ export default function Home({ raulidata, irjnekunkdata }) {
         <section id='contact' className='lg:h-screen'>
           <div className='w-11/12 lg:w-8/12 flex-col m-auto'>
             <h1 className=' px-4 py-2 bg-[#e94e1b] w-fit text-5xl lg:text-8xl text-white'>{raulidata.irjNekunkFocim}</h1>
-              <form onSubmit={onSubmit} className='grid grid-cols-1 grid-rows-10 gap-4 my-6'>
+              <form onSubmit={handleSubmit} className='grid grid-cols-1 grid-rows-10 gap-4 my-6'>
                 <div className='row-span-1 flex flex-col'>
                   <label className='text-2xl'>Vezetéknév <span className=' text-red-700'>*</span></label>
                   <input id="lastname" className='border border-[#e94e1b] p-2' type="text" />
@@ -311,19 +330,23 @@ export default function Home({ raulidata, irjnekunkdata }) {
                   <input id="firstname" className=' border border-[#e94e1b] p-2' type="text" />
                 </div>
                 <div className='row-span-1 flex flex-col '>
-                  <label className='text-2xl'>{emailField.label} <span className=' text-red-700'>*</span></label>
+                  <label className='text-2xl'>Email <span className=' text-red-700'>*</span></label>
                   <input id="email" className=' border border-[#e94e1b] p-2' type="email" />
                 </div>
                 <div className='row-span-6 flex flex-col '>
-                  <label className='text-2xl'>{messageField.label} <span className=' text-red-700'>*</span></label>
-                  <textarea id="message" className=' border border-[#e94e1b] p-2' rows="10" />
+                  <label className='text-2xl'>Rövid Üzenet <span className=' text-red-700'>*</span></label>
+                  <textarea id="message" className=' border border-[#e94e1b] p-2' type="text" rows="10" />
+                </div>
+                <div className='row-span-6 flex flex-col '>
+                  <label className='text-2xl'>Adatkezelési hozzájárulás <span className=' text-red-700'>*</span></label>
+                  <div className='flex gap-4'><input id="consent" className=' border border-[#e94e1b] p-2' type="checkbox"/><label id='consentlabel' for="consent">Elfogadom az <a href="/adatkezelesi-tajekoztato">adatkezelési szabályzatot</a></label></div>
                 </div>
                 <div className='row-span-1 flex flex-col w-fit'>
                   <input type="submit" className=' bg-[#e94e1b] border border-[#e94e1b] px-8 py-2 text-2xl text-white cursor-pointer'/>  
                 </div>
               </form>
           </div>
-        </section>
+        </section>          
 
         <section id='footer' className=' bg-neutral-900'>
           <div className='w-11/12 lg:w-8/12 m-auto grid grid-cols-1 lg:grid-cols-3 py-6 justify-center items-center'>
@@ -366,13 +389,9 @@ export async function getStaticProps() {
   const { data:RauliCzData } = await client.query({ query: RAULI_CZ });
   const raulidata = RauliCzData.pages.nodes[0].rauliMain;
 
-  const { data:IrjNekunkData } = await client.query({ query: IRJ_NEUNK_FORM });
-  const irjnekunkdata = IrjNekunkData.gfForm.formFields.nodes;
-
   return {
     props: {
       raulidata,
-      irjnekunkdata,
     },
     revalidate: 5,
   };
