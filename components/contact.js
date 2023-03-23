@@ -61,7 +61,7 @@ const handleSubmit = (event) => {
                   <input id="firstname" className=' border border-[#e94e1b] p-2' type="text" />
                 </div>
                 <div className='row-span-1 flex flex-col '>
-                  <label className='text-2xl'>Email <span className=' text-red-700'>*</span></label>
+                  <label className='text-2xl'>Emaill <span className=' text-red-700'>*</span></label>
                   <input id="email" className=' border border-[#e94e1b] p-2' type="email" />
                 </div>
                 <div className='row-span-6 flex flex-col '>
